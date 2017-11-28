@@ -14,4 +14,8 @@ export class Bitstamp {
   getUSDtoARS(): Observable<any> {
   	return this.http.get('http://ws.geeklab.com.ar/dolar/get-dolar-json.php', {});
   }
+
+  getETHtoUSD(): Observable<any> {
+  	return this.http.get('https://www.bitstamp.net/api/v2/ticker/ethusd/', {});
+  }
 }

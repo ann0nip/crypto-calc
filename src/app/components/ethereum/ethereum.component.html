@@ -1,0 +1,44 @@
+<span class="input-group-addon" style="border: none">
+		ETH-USD: {{ETHtoUSD}} | USD-ARS: {{USDtoARS}}
+</span>
+<div class="jumbotron eth_ars">
+	<div class="row calc">
+		  <div class="col-md-5">
+		  	<label for="eth">Cantidad de ETH</label>
+		  	<input [(ngModel)]="eth" name="eth" type="number" class="form-control">
+		  </div>
+		  <div class="col-md-2"><label for="plus" class="plus">+</label></div>
+			<div class="col-md-5">
+				<label for="eth_porcent">% extra?</label>
+				<input [(ngModel)]="eth_porcent" name="porcent" type="number" class="form-control">
+			</div>
+	</div>
+	<br>
+	<span class="input-group-addon" style="border: none">
+		<strong>{{
+			((ETHtoUSD * eth) + (ETHtoUSD * (eth_porcent / 100))) * USDtoARS 
+			| number : '1.2-2'
+		}} AR$</strong>
+	</span>
+</div>
+<hr>
+<div class="jumbotron ars_eth">
+	<div class="row calc">
+		  <div class="col-md-5">
+		  	<label for="ars">Cantidad de Pesos</label>
+		  	<input [(ngModel)]="ars" name="ars" type="number" class="form-control">
+		  </div>
+		  <div class="col-md-2"><label for="plus" class="plus">+</label></div>
+			<div class="col-md-5">
+				<label for="eth_porcent">% extra?</label>
+				<input [(ngModel)]="ars_porcent" name="porcent" type="number" class="form-control">
+			</div>
+	</div>
+	<br>
+	<span class="input-group-addon" style="border: none">
+		<strong>{{
+			((ars / (ETHtoUSD * USDtoARS)) + (ars_porcent/100))
+			| number : '1.8-8'
+		}} ETH</strong>
+	</span>
+</div>
