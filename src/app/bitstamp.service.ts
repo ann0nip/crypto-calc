@@ -1,21 +1,27 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class Bitstamp {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: Http) { }
 
-  getBTCtoUSD(): Observable<any> {
-  	return this.http.get('https://www.bitstamp.net/api/v2/ticker/btcusd/', {});
+  getBTCtoUSD(): Promise<any> {
+  	let promise = new Promise((resolve, reject) => {
+	    let apiURL = 'https://coinmonitor.info/data_ar.json';
+	    this.http.get(apiURL)
+	      .toPromise()
+	      .then(res => resolve(res.json()))
+	  });
+	  return promise;
   }
 
-  getUSDtoARS(): Observable<any> {
-  	return this.http.get('http://ws.geeklab.com.ar/dolar/get-dolar-json.php', {});
-  }
+  // getUSDtoARS(): Observable<any> {
+  // 	return this.http.get('https://coinmonitor.info/data_ar.json', {});
+  // }
 
   getETHtoUSD(): Observable<any> {
-  	return this.http.get('https://www.bitstamp.net/api/v2/ticker/ethusd/', {});
+  	return this.http.get('https://coinmonitor.info/altcoins.json', {});
   }
 }

@@ -22,12 +22,12 @@ export class BitcoinComponent implements OnInit {
 	}
 
 	loadRates() {
-		this.bitstampService.getBTCtoUSD().subscribe(data => {
-			this.BTCtoUSD = data.last;
-    });
-		this.bitstampService.getUSDtoARS().subscribe(data => {
-			this.USDtoARS = data.libre;
-    });
+		this.bitstampService.getBTCtoUSD().then(data => {
+			this.BTCtoUSD = data.bitstamp;
+			this.USDtoARS = data.DOLAR_d_blue;
+
+			console.log(typeof this.BTCtoUSD)
+		})
 	}
 
 }
