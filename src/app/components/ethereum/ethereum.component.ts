@@ -23,12 +23,13 @@ export class EthereumComponent implements OnInit {
 	}
 
 	loadRates() {
-		// this.bitstampService.getETHtoUSD().subscribe(data => {
-		// 	this.ETHtoUSD = data.POLO_ETH_up;
-  //   });
-		// this.bitstampService.getBTCtoUSD().subscribe(data => {
-		// 	this.USDtoARS = data.DOLAR_d_blue;
-  //   });
+		this.bitstampService.getBTCandUSD().then(data => {
+			this.USDtoARS = data.DOLAR_d_blue;
+    });
+
+  	this.bitstampService.getETHtoUSD().then(data => {
+			this.ETHtoUSD = data.POLO_ETH_up;
+		})
 	}
 
 }
